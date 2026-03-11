@@ -11,6 +11,8 @@
 # => prefix[right] - prefix[left - 1] (if left > 0) or prefix[right] (if left == 0).
 # => eg) For the array              [2, 0, 4, 5, 3, 1]
 # => the prefix sum array would be: [2, 2, 6, 11, 14, 15]   
+# => when left = 2, right = 4, range sum =  12
+# => 14(prefixArr[4]) - 2 (prefixArr[2-1]) = 12
 # => The sum of the range from index 1 to 3 would be 
 # => prefix[3] - prefix[0] = 11 - 2 = 9.
 # => The sum of the range from index 0 to 2 would be 
