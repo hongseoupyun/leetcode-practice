@@ -4,7 +4,7 @@
 # Brute force
 # => Loop through all possible subarrays and count the number of 0s and 1s in each subarray. O(n^2) time complexity.
 # Used pattern: prefix sum
-# => We can use prefux sum, If you treat 1 as +1 and 0 as -1, then prefix sum of a balanced subarray will be 0.
+# => We can use prefux sum, If you treat 1 as +1 and 0 as -1, then prefix sum of a balanced subarray will be the same at the start and end of that subarray.
 # => and we can use hashmap to store the prefix sum and the index where it first appeared.
 # => if we encounter the same prefix sum again, it means the subarray between that previous index and the current index has equal number of 0s(because the prefix sum did not change).
 # => and we can calculate the length of that subarray and that will be a candidate for the maximum length of a contiguous subarray with an equal number of 0 and 1.  
