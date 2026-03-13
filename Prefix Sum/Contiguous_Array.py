@@ -6,7 +6,7 @@
 # Used pattern: prefix sum
 # => We can use prefux sum, If you treat 1 as +1 and 0 as -1, then prefix sum of a balanced subarray will be 0.
 # => and we can use hashmap to store the prefix sum and the index where it first appeared.
-# => if we encounter the same prefix sum again, it means the subarray between that previous index and the current index has equal number of 0s.
+# => if we encounter the same prefix sum again, it means the subarray between that previous index and the current index has equal number of 0s(because the prefix sum did not change).
 # => and we can calculate the length of that subarray and that will be a candidate for the maximum length of a contiguous subarray with an equal number of 0 and 1.  
 # => Do this for whole array and return the maximum length found.  
 # 
@@ -30,24 +30,24 @@ class Solution:
         # Initialize with {0: -1} to correctly calculate the length when a balanced subarray starts from index 0.
         hashmap = {0: -1}
         max_len = 0
-        current_count = 0
+        current_prefix_sum = 0
         
         for i, num in enumerate(nums):
             # 2. Treat 1 as +1 and 0 as -1 to calculate the balance.
             if num == 1:
-                current_count += 1
+                current_prefix_sum += 1
             else:
-                current_count -= 1
+                current_prefix_sum -= 1
             
             # 3. If the exact same prefix sum is already in the hashmap:
             # It means the subarray between that previous index and the current index has a sum of 0 (equal number of 0s and 1s).
-            if current_count in hashmap:
+            if current_prefix_sum in hashmap:
                 # current index - previous index = length of the balanced subarray
-                length = i - hashmap[current_count]
+                length = i - hashmap[current_prefix_sum]
                 max_len = max(max_len, length)
             else:
                 # If it's a new sum, record its current index. 
                 # (We only store the FIRST occurrence to ensure we get the MAXIMUM length later)
-                hashmap[current_count] = i
+                hashmap[current_prefix_sum] = i
                 
         return max_len
