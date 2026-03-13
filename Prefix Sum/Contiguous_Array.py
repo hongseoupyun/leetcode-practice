@@ -43,8 +43,8 @@ class Solution:
             # It means the subarray between that previous index and the current index has a sum of 0 (equal number of 0s and 1s).
             if current_prefix_sum in hashmap:
                 # current index - previous index = length of the balanced subarray
-                length = i - hashmap[current_prefix_sum]
-                max_len = max(max_len, length)
+                candidate_length = i - hashmap[current_prefix_sum]
+                max_length = max(max_length,candidate_length)
             else:
                 # If it's a new sum, record its current index. 
                 # (We only store the FIRST occurrence to ensure we get the MAXIMUM length later)
