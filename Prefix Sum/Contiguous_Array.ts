@@ -18,3 +18,28 @@
 // # 5. If the current prefix sum is not in the hashmap, add it with the current index to the hashmap.    
 // # Time complexity for this approach is O(n) because we are traversing the array once and hashmap operations are O(1) on average. 
 // # Space complexity is also O(n) as we may store all prefix sums possible in the hashmap in the worst case. 
+
+
+function findMaxLength(nums: number[]): number {
+    const hashMap = new Map<number, number>();
+    let maxLength = 0;
+    let currentPrefixSum = 0;
+    hashMap.set(0, -1);
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === 0) {
+            currentPrefixSum -= 1
+        } else {
+            currentPrefixSum += 1
+        }
+
+        if (hashMap.has(currentPrefixSum)) {
+            let candidateMaxLegnth = i - hashMap.get(currentPrefixSum)!
+            maxLength = Math.max(maxLength, candidateMaxLegnth)
+        } else {
+            hashMap.set(currentPrefixSum, i)
+        }
+
+    }
+    return maxLength
+};
