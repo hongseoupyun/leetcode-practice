@@ -24,15 +24,19 @@
 #Brute force
 # => Loop through all possible triplets and check if their sum equals 0. If it does, add the triplet to a set to avoid duplicates. O(n^3) time complexity
 # Used pattern: two pointers
-# =>To use two pointers pattern, sort the nums array in ascending order. Then, loop through the sorted array.
-# => For each number, use two pointers to find pairs that sums up to -current number.
-# => For eaxmple, There is 3 numbers a,b,c, then with having a as the current number, find paris of b and c that sumps up to -a using two pointers so that a + b + c = 0.
-# => If the sum of the three numbers is 0, add the triplet to the result list. 
-# => If the sum is less than 0, move the left pointer to the right to increase the sum. 
-# => If the sum is greater than 0, move the right pointer to the left to decrease the sum.
-# => To avoid duplicates, skip the same number for the current number and also skip the same number for the left and right pointers.
+# step 1:sorting the array
+# => Sort the array in ascending order to use two pointers pattern and to easily skip duplicates.
+# step 2: outer loop
+# => Fix the first number and loop through the array.
+# => Optimazation: Since the array is sorted, if the current number is greater than 0, break the loop as there wont be any triplet that sums up to 0.
+# => Duplicate check: if the current number is the same as the previous number, skip it to avoid duplicates.
+# step 3: two pointers; left and right
+# => With current_sum = nums[i] + nums[left_pointer] + nums[right_pointer], push/append the triplet to the result if the current_sum is 0.
+# => Duplicate check: if the next number is the same as the current number, skip it by adding or subtracting 1 to the left or right pointer to avoid duplicates.
+# => Similar to 2 sum, do right-=1 if current_sum > 0 and left+=1 if current_sum < 0 to move the pointers towards each other.
+
 # => Time complexity is O(n^2) as we are looping twice through the array, once for the current number and once for the two pointers.
-# => Space complexity is O(n) for the result list in the worst case
+# => Space complexity is O(n) as we are sorting the array once and storing the result in a list/array.
 
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
