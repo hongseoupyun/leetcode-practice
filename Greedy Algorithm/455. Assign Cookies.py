@@ -18,4 +18,21 @@
 
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        # Sort greed factors and cookie sizes in ascending order
+        g.sort()
+        s.sort()
         
+        child_i = 0
+        cookie_j = 0
+        
+        # Iterate while there are children and cookies left to check
+        while child_i < len(g) and cookie_j < len(s):
+            # If the current cookie can satisfy the current child
+            if s[cookie_j] >= g[child_i]:
+                # Child is satisfied, move to the next child
+                child_i += 1
+            # Move to the next cookie regardless of whether it was used
+            cookie_j += 1
+            
+        # The number of satisfied children is equal to the child pointer
+        return child_i
