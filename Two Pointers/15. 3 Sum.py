@@ -42,7 +42,7 @@ class Solution:
         for i in range(len(nums)):
 
             # Since the array is sorted, if the current number is greater than 0, we can break the loop as there won't be any triplet that sums up to 0.
-            if nums(i) >0:
+            if nums[i] > 0:
                 break
             if i > 0 and nums[i] == nums[i-1]:
                 continue
