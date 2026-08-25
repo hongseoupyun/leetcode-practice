@@ -49,8 +49,8 @@ Optimal Approach:
 1. Use two pointers, one for iterating through the array and another for keeping track of the position of unique elements.
 2. Start with index 1, index 0 will be the smallest number as the given an integer array nums sorted in non-decreasing order.
 3. Loop through the array starting from index 1 as we are comparing the current number with the previous number to check for duplicates.
-4. If the current number is not equal to the previous number, it means it is a unique number and we can add it to the array at index k.
-5. Finally, return k which will be the length of the unique elements in the array.
+4. If the current number is not equal to the previous number, it means it is a unique number and we can add it to the array at index left.
+5. Finally, return left which will be the length of the unique elements in the array.
 
 Time Complexity: O(n) - As we are iterating through the array once.
 Space Complexity: O(1) - As we are not using any extra space.
@@ -62,16 +62,16 @@ function removeDuplicates(nums: number[]): number {
 
     if (nums.length === 0) return 0;
     // Start with index 1, index 0 will be the smallest number as the given an integer array nums sorted in non-decreasing order
-    let k = 1
+    let leftPointer = 1
     // Loop through the array starting from index 1 as we are comparing the current number with the previous number to check for duplicates
-    for (let i = 1; i < nums.length; i++) {
-        // If the current number is not equal to the previous number, it means it is a unique number and we can add it to the array at index k
-        if (nums[i] !== nums[k - 1]) {
-            nums[k] = nums[i]
-            k++
+    for (let r = 1; r < nums.length; r++) {
+        // If the current number is not equal to the previous number, it means it is a unique number and we can add it to the array at index left
+        if (nums[r] !== nums[r - 1]) {
+            nums[leftPointer] = nums[r]
+            leftPointer++
         }
     }
-    return k
+    return leftPointer
 
 
 };

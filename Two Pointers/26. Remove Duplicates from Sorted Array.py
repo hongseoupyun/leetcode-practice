@@ -47,8 +47,8 @@
 # 1. Use two pointers, one for iterating through the array and another for keeping track of the position of unique elements.
 # 2. Start with index 1, index 0 will be the smallest number as the given an integer array nums sorted in non-decreasing order.
 # 3. Loop through the array starting from index 1 as we are comparing the current number with the previous number to check for duplicates.
-# 4. If the current number is not equal to the previous number, it means it is a unique number and we can add it to the array at index k.
-# 5. Finally, return k which will be the length of the unique elements in the array. 
+# 4. If the current number is not equal to the previous number, it means it is a unique number and we can add it to the array at index left.
+# 5. Finally, return left which will be the length of the unique elements in the array. 
 
 # Time Complexity: O(n) - As we are iterating through the array once.
 # Space Complexity: O(1) - As we are not using any extra space.
@@ -59,16 +59,14 @@ class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums) == 0: return 0
         
-        write_index = 1
+        left_pointer = 1
 
         for i in range(1,len(nums)):
 
-            if nums[i] != nums[write_index - 1]:
-                nums[write_index] = nums[i]
-                write_index+=1
+            if nums[i] != nums[i - 1]:
+                nums[left_pointer] = nums[i]
+                left_pointer+=1
 
         
-        return write_index            
-
-        
+        return left_pointer            
         
