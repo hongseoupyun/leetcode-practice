@@ -48,11 +48,13 @@
 # 2. Start with index 1, index 0 will be the smallest number as the given an integer array nums sorted in non-decreasing order.
 # 3. Loop through the array starting from index 1 as we are comparing the current number with the previous number to check for duplicates.
 # 4. If the current number is not equal to the previous number, it means it is a unique number and we can add it to the array at index k.
-# 5. Finally, return k which will be the length of the unique elements in the array.
+# 5. Finally, return k which will be the length of the unique elements in the array. 
 
 # Time Complexity: O(n) - As we are iterating through the array once.
 # Space Complexity: O(1) - As we are not using any extra space.
 
+# Input: nums = [0,0,1,1,1,2,2,3,3,4]
+# Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums) == 0: return 0
