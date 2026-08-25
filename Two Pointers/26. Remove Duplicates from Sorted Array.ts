@@ -35,23 +35,43 @@ Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 */
+/*
+Brute Force Approach:
+1. Create a new array to store the unique elements.
+2. Loop through the given array and check if the current element is already present in the new array.
+3. If it is not present, add it to the new array.
+4. Finally, return the length of the new array.
+
+Time Complexity: O(n^2) - As we are using indexOf method which takes O(n) time for each element in the array.
+Space Complexity: O(n) - As we are using a new array to store the unique elements.
+
+Optimal Approach:
+1. Use two pointers, one for iterating through the array and another for keeping track of the position of unique elements.
+2. Start with index 1, index 0 will be the smallest number as the given an integer array nums sorted in non-decreasing order.
+3. Loop through the array starting from index 1 as we are comparing the current number with the previous number to check for duplicates.
+4. If the current number is not equal to the previous number, it means it is a unique number and we can add it to the array at index k.
+5. Finally, return k which will be the length of the unique elements in the array.
+
+Time Complexity: O(n) - As we are iterating through the array once.
+Space Complexity: O(1) - As we are not using any extra space.
+*/
+
+
 
 function removeDuplicates(nums: number[]): number {
 
     if (nums.length === 0) return 0;
     // Start with index 1, index 0 will be the smallest number as the given an integer array nums sorted in non-decreasing order
-    let writeIndex = 1
-
+    let k = 1
+    // Loop through the array starting from index 1 as we are comparing the current number with the previous number to check for duplicates
     for (let i = 1; i < nums.length; i++) {
-
-        if (nums[i] !== nums[writeIndex - 1]) {
-            nums[writeIndex] = nums[i]
-            writeIndex++
-
+        // If the current number is not equal to the previous number, it means it is a unique number and we can add it to the array at index k
+        if (nums[i] !== nums[k - 1]) {
+            nums[k] = nums[i]
+            k++
         }
-
     }
-    return writeIndex
+    return k
 
 
 };
