@@ -45,21 +45,21 @@ Space Complexity: O(1) - As we are not using any extra space.
 
 function reverseList(head: ListNode | null): ListNode | null {
     // prev will point to the previous node, curr will point to the current node
-    let prev: ListNode | null = null;
-    let curr: ListNode | null = head;
+    let prevNode: ListNode | null = null;
+    let currNode: ListNode | null = head;
     
-    while (curr !== null) {
+    while (currNode !== null) {
         // Store the next node in a temporary variable
-        const nextTemp: ListNode | null = curr.next;
+        const temp: ListNode | null = currNode.next;
         
         // Change the next pointer of curr to point to prev
-        curr.next = prev;
+        currNode.next = prevNode;
         
         // Move prev and curr one step forward
-        prev = curr;
-        curr = nextTemp;
+        prevNode = currNode;
+        currNode = temp;
     }
     
     // Finally, return prev which will be the new head of the reversed linked list
-    return prev;
+    return prevNode;
 }
