@@ -33,13 +33,16 @@ Space Complexity: O(1) - As we are not using any extra space.
 #     current
 
 #  1 -> 2 -> 3 -> null
-# null <- 1 <- 2 <- 3
+#  3 -> 2 -> 1 -> null
 
 
 # Input: head = [1,2,3,4,5]
 # Output: [5,4,3,2,1]
+
+
+from typing import Optional
 class Solution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def reverseList(self, head) -> Optional[ListNode]:
         # Make a prev_node to store the new end null and set current pointer to the head
         prev_node = None
         current_node = head
