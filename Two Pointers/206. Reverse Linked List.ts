@@ -32,6 +32,15 @@ Space Complexity: O(1) - As we are not using any extra space.
  *         this.next = (next===undefined ? null : next)
  *     }
  * }
+ * 
+ * 
+ * 
+ * 
+ *     prev
+        ↓
+        [Null]    [ 1 ] ---> [ 2 ] ---> [ 3 ] ---> [Null]
+                    ↑
+                   curr
  */
 
 function reverseList(head: ListNode | null): ListNode | null {
