@@ -50,9 +50,9 @@ class Solution:
             temp = current_node.next
             # Reverse current node's direction by setting prev node as currnet_node.next 
             current_node.next = prev_node 
-            # Moving the pointer to right by setting current node ans a prev node
+            # Moving the prev node pointer one step to the right
             prev_node = current_node
-            # Get next node from temp and set it to current node
+            # Moving the current node pointer to right by setting next node(temp) as a current node
             current_node = temp
 
 
