@@ -52,6 +52,7 @@ class Solution:
             current_node.next = prev_node 
             # Moving the pointer to right by setting current node ans a prev node
             prev_node = current_node
+            # Get next node from temp and set it to current node
             current_node = temp
 
 
