@@ -51,7 +51,7 @@
     # if storage_stack is empty, return immediately, therer is nothing to check match
     # Else(storage_stack is not emtpy), pop the last element for the storage_stack
     # if current character(closing bracket) does not match with popped_element, return false
-# when the loops ends
+# when the loop ends
     #if nothing left in storage_stack, return true
     #else(something left), return false
 # Time complexity: O(n) - As we are iterating through the string once.
