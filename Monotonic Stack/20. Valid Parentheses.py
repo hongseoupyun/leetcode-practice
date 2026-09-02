@@ -48,7 +48,7 @@
 # Make a math dictionary to check bracket match and Make a storage_stack array to store brackets
 # If the bracket is an opening bracket, store the bracket into storage_stack
 # else(if the bracket is a closing bracket),
-    # if storage_stack is empty, return immediately, therer is nothing to check match
+    # if storage_stack is empty, return immediately, there is nothing to check match
     # Else(storage_stack is not emtpy), pop the last element for the storage_stack
     # if current character(closing bracket) does not match with popped_element, return false
 # when the loop ends
