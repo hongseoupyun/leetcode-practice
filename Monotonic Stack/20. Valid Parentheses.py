@@ -39,17 +39,86 @@
 
 
 # Optimal Approach:
-# 1. Loop through the character of input s.
-# 2. Make a dictionary/object to check parentheses match and make a storageStack to stack the input s character.
-# 3. Looping through the input s and if the character is a closing parentheses, pop the last element from storageStack. Return false if storageStack was empty or the popped element is not matching.
-# 4. Looping thorugh the input s and pop the last element in storageStack if the character is closing parentheses and last element of the storageStack is matching opening parentehses.
-# 5. When loop ends till the end and nothing left in the storageStack, return ture.
-# 6. When loop ends but there is something left in storageStack, return false.
+# 1. Loop through each character of input string s.
+# 2. Make a dictionary/object to check bracket match, and make an empty storageStack.
+# 3. If the character is an OPENING bracket, push (append) that character into storageStack.
+# 4. If the character is a CLOSING bracket:
+#    - If storageStack is empty, return false immediately.
+#    - Else, pop the last element from storageStack.
+#    - If this popped element does not match the current closing bracket, return false.
+# 5. When the loop ends completely:
+#    - If nothing is left in storageStack (empty), return true.
+#    - Else (something left), return false.
 
- # input s =" "([])" => output = true
-
-
-
+# input s = "([])" => output = true
 class Solution:
     def isValid(self, s: str) -> bool:
+
+        # Making a dictionary to check bracket match and empty storageStack array
+        storage_stack = []
+        # Opening Braket : Closing Braket
+        match_dictionary = { 
+            "(" : ")", 
+            "{" : "}", 
+            "[" : "]" 
+            }
+        # Loop through the character in input s
+        for char in s:
+            # if char is an opening bracket, stack the character into storage_stack
+            if char in match_dictionary:
+                storage_stack.append(char)
+            # when if char is a closing bracket, and if storage_stack is empty and return false
+            if char not in match_dictionary:
+                if not storage_stack:
+                    return False
+            # when if char is a closing bracket, and if storage_stack is not empty, pop the last element of storage_stack
+                else:
+                    popped_element = storage_stack.pop()
+            # if the popped element is does not math with the current character, return false
+                if char != match_dictionary[popped_element]:
+                    return False
+        # If nothing is left in storage_stack, return True. Else, return false        
+        if not storage_stack:
+                return True
+        else:
+            return False
+        
+
+
+
+    def isValid2(self, s: str) -> bool:
+        storage_stack = []
+        # Map opening brackets to their corresponding closing brackets
+        match_dictionary = { 
+            "(" : ")", 
+            "{" : "}", 
+            "[" : "]" 
+        }
+
+        # Loop through each character in the input string s
+        for char in s:
+            # If the character is an opening bracket, push it into storage_stack
+            if char in match_dictionary:
+                storage_stack.append(char)
+            # If the character is a closing bracket
+            else:
+                # If storage_stack is empty, there is no matching opening bracket
+                if not storage_stack:
+                    return False
+                
+                # Pop the last element and check if it matches the current closing bracket
+                popped_element = storage_stack.pop()
+                if char != match_dictionary[popped_element]:
+                    return False
+                
+        # If storage_stack is completely empty, return True. Otherwise, return False
+        return not storage_stack
+
+
+            
+
+
+
+      
+
         
