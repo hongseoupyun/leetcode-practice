@@ -50,7 +50,11 @@
 #    - If nothing is left in storageStack (empty), return true.
 #    - Else (something left), return false.
 
+# Time complexity: O(n) - As we are iterating through the string once.
+# Space complexity: O(n) - As we are using a stack to store the opening brackets
+
 # input s = "([])" => output = true
+
 class Solution:
     def isValid(self, s: str) -> bool:
 
