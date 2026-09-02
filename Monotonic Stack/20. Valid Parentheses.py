@@ -38,18 +38,22 @@
 # Output: false
 
 
-# Optimal Approach:
-# 1. Loop through each character of input string s.
-# 2. Make a dictionary/object to check bracket match, and make an empty storageStack.
-# 3. If the character is an OPENING bracket, push (append) that character into storageStack.
-# 4. If the character is a CLOSING bracket:
-#    - If storageStack is empty, return false immediately.
-#    - Else, pop the last element from storageStack.
-#    - If this popped element does not match the current closing bracket, return false.
-# 5. When the loop ends completely:
-#    - If nothing is left in storageStack (empty), return true.
-#    - Else (something left), return false.
 
+# Input : "(([[]]))"
+# Input : "]"
+# Input : "{[]}("
+
+# Optimal Approach:
+# Loop through all the characters in input s
+# Make a math dictionary to check bracket match and Make a storage_stack array to store brackets
+# If the bracket is an opening bracket, store the bracket into storage_stack
+# else(if the bracket is a closing bracket),
+    # if storage_stack is empty, return immediately, therer is nothing to check match
+    # Else(storage_stack is not emtpy), pop the last element for the storage_stack
+    # if current character(closing bracket) does not match with popped_element, return false
+# when the loops ends
+    #if nothing left in storage_stack, return true
+    #else(something left), return false
 # Time complexity: O(n) - As we are iterating through the string once.
 # Space complexity: O(n) - As we are using a stack to store the opening brackets
 
